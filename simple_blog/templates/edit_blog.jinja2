@@ -1,4 +1,4 @@
-{% extends "pyramid_blogr:templates/layout.jinja2" %}
+{% extends "simple_blog:templates/layout.jinja2" %}
 
 {% block content %}
     <form action="{{request.route_url('blog_action',action=action)}}" method="post" class="form">
