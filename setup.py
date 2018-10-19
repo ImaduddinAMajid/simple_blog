@@ -21,7 +21,8 @@ requires = [
     'wtforms==2.1',
     'webhelpers2==2.0',
     'paginate==0.5.6',
-    'paginate_sqlalchemy==0.2.0'
+    'paginate_sqlalchemy==0.2.0',
+    'passlib'
     ]
 
 tests_require = [
