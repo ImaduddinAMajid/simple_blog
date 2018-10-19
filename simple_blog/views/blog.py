@@ -14,7 +14,7 @@ def blog_view(request):
 	return {'entry': entry}
 
 @view_config(route_name='blog_action', match_param='action=create',
-renderer='simple_blog:templates/create_blog.jinja2')
+renderer='simple_blog:templates/edit_blog.jinja2')
 def blog_create(request):
 	entry = BlogRecord()
 	form  = BlogCreateForm(request.POST)
