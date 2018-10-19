@@ -28,4 +28,15 @@ def blog_create(request):
 @view_config(route_name='blog_action', match_param='action=edit',
 renderer='simple_blog:templates/edit_blog.jinja2')
 def blog_edit(request):
-	return{}
+	blog_id = int(request.params.get('id', -1))
+	entry = BlogRecordService.by_id(blog_id, request)
+	if not entry:
+		return HTTPNotFound()
+	form = BlogUpdateForm(request.POST, entry)
+	if request.method == "POST" and form.validate():
+		del form.id
+		form.populate_obj(entry)
+		return HTTPFound(
+			location=request.route_url('blog', id=entry.id, slug=entry.slug)
+		)
+	return {'form': form, 'action': request.matchdict.get('action')}
